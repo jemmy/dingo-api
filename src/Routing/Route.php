@@ -281,11 +281,14 @@ class Route extends \Illuminate\Routing\Route
      */
     protected function makeControllerInstance()
     {
-        [$this->controllerClass, $this->controllerMethod] = explode('@', $this->action['uses']);
+        if ($this->route->controller) {
+            $this->controller = $this->route->controller;
+        } else {
+            [$this->controllerClass, $this->controllerMethod] = explode('@', $this->action['uses']);
 
-        $this->container->instance($this->controllerClass,
-            $this->controller = $this->container->make($this->controllerClass));
-
+            $this->container->instance($this->controllerClass,
+                $this->controller = $this->container->make($this->controllerClass));
+        }
         return $this->controller;
     }
 
