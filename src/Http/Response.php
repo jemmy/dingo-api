@@ -72,7 +72,7 @@ class Response extends IlluminateResponse
      * @param \Dingo\Api\Transformer\Binding $binding
      * @return void
      */
-    public function __construct($content, $status = 200, $headers = [], Binding $binding = null)
+    public function __construct($content, $status = 200, $headers = [], Binding|nill $binding = null)
     {
         parent::__construct($content, $status, $headers);
 
