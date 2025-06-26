@@ -56,7 +56,7 @@ class Factory
      * @param \Closure|null $after
      * @return \Dingo\Api\Transformer\Binding
      */
-    public function register($class, $resolver, array $parameters = [], Closure $after = null)
+    public function register($class, $resolver, array $parameters = [], Closure|null $after = null)
     {
         return $this->bindings[$class] = $this->createBinding($resolver, $parameters, $after);
     }
@@ -127,7 +127,7 @@ class Factory
      * @param \Closure               $callback
      * @return \Dingo\Api\Transformer\Binding
      */
-    protected function createBinding($resolver, array $parameters = [], Closure $callback = null)
+    protected function createBinding($resolver, array $parameters = [], Closure|null $callback = null)
     {
         return new Binding($this->container, $resolver, $parameters, $callback);
     }
